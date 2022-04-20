@@ -39,11 +39,12 @@ function App() {
           one click -> disable clicking again +  */}
           <div> 
             {choices(question).map((choice)=> (
-          <button
-            onClick= {() =>{
-              alert('clicked');
-            }}>
-          </button>
+            <button
+              onClick= {() =>{
+                alert('could be right or wrong');
+              }}>
+                {choice}
+            </button>
             ))}
         </div>
       </div>
