@@ -1,6 +1,7 @@
 
 import './App.css';
 import React, {useEffect, useState} from 'react';
+//import {decode} from 'html-entities';
 //import Button from '@mui/material/Button';
 
 function App() {
@@ -20,9 +21,16 @@ function App() {
   const getRandomInt = x => {
     return Math.floor(Math.random() * x);
   }
+  // function decodeHTMLEntities(text) {
+  //   var textArea = document.createElement('textarea');
+  //   textArea.innerHTML = text;
+  //   return textArea.value;
+  // }
 
   function Question({ question }){
 
+    //reponded-> set if responded and disable clicking of other buttons
+    const [isAnswered, setIsAnswered] = useState(false);
     //answer ->set if correct or incorrect after answer choice is clicked
     const [answer, setAnswer] = useState("");
 
@@ -47,10 +55,12 @@ function App() {
           <div> 
             {choices(question).map((choice)=> (
             <button
+            disabled = {isAnswered} //disable button if already clicked
               onClick= {() =>{
                 //if correct, alert correct
-                if(choice === question.correct_answer) setAnswer('CORRECT:)');
-                else setAnswer('NOPE :o');
+                setIsAnswered(true);
+                if(choice === question.correct_answer) setAnswer('CORRECT🥳');
+                else setAnswer('NOPE 😭');
               }}>
                 {choice}
             </button>
