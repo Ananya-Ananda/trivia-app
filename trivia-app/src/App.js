@@ -46,7 +46,7 @@ function App() {
       //     set result as correct or false
       <div>
         {/* display question */}
-        <div>
+        <div className = "ques">
           <h3> {question.question} </h3>
           <h4> {answer} </h4>
         </div>
@@ -75,7 +75,7 @@ function App() {
     // App title
     <div>
       <div>
-        <h1>Trivia App </h1>
+        <h1>Trivia App</h1>
         {/* map questions */}
       </div> 
       {questions.map((question) =>(
@@ -84,5 +84,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
