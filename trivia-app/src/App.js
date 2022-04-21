@@ -2,7 +2,7 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 //import {decode} from 'html-entities';
-//import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 
 function App() {
   
@@ -54,7 +54,7 @@ function App() {
           one click -> disable clicking again +  */}
           <div> 
             {choices(question).map((choice)=> (
-            <button
+            <Button variant="contained" color= "secondary"
             disabled = {isAnswered} //disable button if already clicked
               onClick= {() =>{
                 //if correct, alert correct
@@ -63,7 +63,7 @@ function App() {
                 else setAnswer('NOPE 😭');
               }}>
                 {choice}
-            </button>
+            </Button>
             ))}
         </div>
       </div>
@@ -74,10 +74,8 @@ function App() {
   return (
     // App title
     <div>
-      <div>
         <h1>Trivia App</h1>
         {/* map questions */}
-      </div> 
       {questions.map((question) =>(
         <Question question={question}></Question>
       ))}
