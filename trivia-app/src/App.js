@@ -20,11 +20,14 @@ function App() {
 
   function Question({ question }){
 
+    //answer ->set if correct or incorrect after answer choice is clicked
+    const [answer, setAnswer] = useState("");
+
     //store choices in  a const
     const choices = (question) => {
-      let answers = question.incorrect_answers;
-      answers = [...answers, question.correct_answer];
-      return answers;
+      let answerChoices = question.incorrect_answers;
+      answerChoices = [...answerChoices, question.correct_answer];
+      return answerChoices;
     };
     return(
       // create questions
@@ -41,12 +44,17 @@ function App() {
             {choices(question).map((choice)=> (
             <button
               onClick= {() =>{
-                alert('could be right or wrong');
+                //if correct, alert correct
+                if(choice === question.correct_answer) setAnswer('CORRECT:)');
+                else setAnswer('NOPE :o');
               }}>
                 {choice}
             </button>
             ))}
         </div>
+        <h4>
+          {answer}
+        </h4>
       </div>
     );
   }
@@ -56,7 +64,7 @@ function App() {
     // App title
     <div>
       <div>
-        <h1>Trivia App:)</h1>
+        <h1>Trivia App </h1>
         {/* map questions */}
       </div> 
       {questions.map((question) =>(
