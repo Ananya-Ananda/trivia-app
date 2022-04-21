@@ -17,6 +17,9 @@ function App() {
     });
 
   }, []);
+  const getRandomInt = x => {
+    return Math.floor(Math.random() * x);
+  }
 
   function Question({ question }){
 
@@ -25,8 +28,8 @@ function App() {
 
     //store choices in  a const
     const choices = (question) => {
-      let answerChoices = question.incorrect_answers;
-      answerChoices = [...answerChoices, question.correct_answer];
+      let answerChoices = [...question.incorrect_answers];
+      answerChoices.splice(getRandomInt(question.incorrect_answers.length),0, question.correct_answer);
       return answerChoices;
     };
     return(
@@ -35,9 +38,10 @@ function App() {
       //     set result as correct or false
       <div>
         {/* display question */}
-        <h3>
-          {question.question}
-        </h3>
+        <div>
+          <h3> {question.question} </h3>
+          <h4> {answer} </h4>
+        </div>
           {/* question choices -> map the choices
           one click -> disable clicking again +  */}
           <div> 
@@ -52,9 +56,6 @@ function App() {
             </button>
             ))}
         </div>
-        <h4>
-          {answer}
-        </h4>
       </div>
     );
   }
